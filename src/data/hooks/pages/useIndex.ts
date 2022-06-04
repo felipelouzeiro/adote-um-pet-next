@@ -8,13 +8,19 @@ export function useIndex() {
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null)
   const [email, setEmail] = useState<string>('')
   const [donation, setDonation] = useState<string>('')
-  const [message, setMessage] = useState<string>()
+  const [message, setMessage] = useState<string>('')
 
   useEffect(() => {
     ApiService.get('/pets').then((response) => {
       setPetList(response.data)
     })
   }, [])
+
+  useEffect(() => {
+    if (selectedPet === null) {
+      clearFormFields()
+    }
+  }, [selectedPet])
 
   function toAdopt() {
     if (adoptValidate()) {
@@ -37,6 +43,11 @@ export function useIndex() {
 
   function adoptValidate() {
     return email.length > 0 && donation.length > 0
+  }
+
+  function clearFormFields() {
+    setEmail('')
+    setDonation('')
   }
 
   return {
