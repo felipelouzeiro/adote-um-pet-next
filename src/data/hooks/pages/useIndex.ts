@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { Pet } from '../../@types/patch'
 import { ApiService } from '../../services/ApiServices'
@@ -7,17 +8,36 @@ export function useIndex() {
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null)
   const [email, setEmail] = useState<string>('')
   const [donation, setDonation] = useState<string>('')
-  const [confirmationMessage, setConfirmationMessage] = useState<string>(
-    'Adoção confirmada, verifique sua caixa de email'
-  )
-
-  function toAdopt() {}
+  const [message, setMessage] = useState<string>()
 
   useEffect(() => {
     ApiService.get('/pets').then((response) => {
       setPetList(response.data)
     })
   }, [])
+
+  function toAdopt() {
+    if (adoptValidate()) {
+      ApiService.post('/adocoes', {
+        pet_id: selectedPet.id,
+        email,
+        donation,
+      })
+        .then(() => {
+          setSelectedPet(null)
+          setMessage('Adoção confirmada, verifique sua caixa de email')
+        })
+        .catch((error: AxiosError) => {
+          setMessage(error.response?.data.message)
+        })
+    } else {
+      setMessage('Preencha todos os campos corretamente!')
+    }
+  }
+
+  function adoptValidate() {
+    return email.length > 0 && donation.length > 0
+  }
 
   return {
     petList,
@@ -27,8 +47,8 @@ export function useIndex() {
     setEmail,
     donation,
     setDonation,
-    confirmationMessage,
-    setConfirmationMessage,
+    message,
+    setMessage,
     toAdopt,
   }
 }

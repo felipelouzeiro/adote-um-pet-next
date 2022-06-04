@@ -20,8 +20,8 @@ const Home: NextPage = () => {
     setEmail,
     donation,
     setDonation,
-    confirmationMessage,
-    setConfirmationMessage,
+    message,
+    setMessage,
     toAdopt,
   } = useIndex()
 
@@ -73,10 +73,10 @@ const Home: NextPage = () => {
         </DialogActions>
       </Dialog>
       <Snackbar
-        open={confirmationMessage.length > 0}
-        message={confirmationMessage}
+        open={message.length > 0}
+        message={message}
         autoHideDuration={2500}
-        onClose={() => setConfirmationMessage('')}
+        onClose={() => setMessage('')}
       />
     </>
   )
