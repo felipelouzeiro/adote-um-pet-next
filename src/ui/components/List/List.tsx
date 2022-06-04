@@ -8,10 +8,11 @@ import {
 } from './List.style'
 import { Button } from '@mui/material'
 import { Pet } from '../../../data/@types/patch'
-import { TextService } from '../../../data/@types/TextService'
+import { TextService } from '../../../data/services/TextService'
 
 interface IListPets {
   pets: Pet[]
+  onSelect: (pet: Pet) => void
 }
 
 export const List = (props: IListPets) => {
@@ -30,8 +31,12 @@ export const List = (props: IListPets) => {
                   maximumDescriptionSize
                 )}
               </Description>
-              <Button variant={'contained'} fullWidth>
-                Adotar
+              <Button
+                variant={'contained'}
+                fullWidth
+                onClick={() => props.onSelect(pet)}
+              >
+                Adotar {pet.name}
               </Button>
             </Information>
           </ItemList>

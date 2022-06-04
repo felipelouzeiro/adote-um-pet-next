@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Pet } from '../../@types/patch'
 
 export function useIndex() {
+  function toAdopt() {}
+
   const [petList, setPetList] = useState([
     {
       id: 1,
@@ -21,10 +23,22 @@ export function useIndex() {
   ])
 
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null)
+  const [email, setEmail] = useState<string>('')
+  const [donation, setDonation] = useState<string>('')
+  const [confirmationMessage, setConfirmationMessage] = useState<string>(
+    'Adoção confirmada, verifique sua caixa de email'
+  )
 
   return {
     petList,
     selectedPet,
     setSelectedPet,
+    email,
+    setEmail,
+    donation,
+    setDonation,
+    confirmationMessage,
+    setConfirmationMessage,
+    toAdopt,
   }
 }
