@@ -24,6 +24,13 @@ const Home: NextPage = () => {
             image:
               'https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg',
           },
+          {
+            id: 1,
+            name: 'bidu',
+            description: 'Lorem ipsum dol totam dolores.',
+            image:
+              'https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg',
+          },
         ]}
       />
     </>
