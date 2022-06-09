@@ -25,7 +25,7 @@ export function useIndex() {
   function toAdopt() {
     if (adoptValidate()) {
       ApiService.post('/adocoes', {
-        pet_id: selectedPet.id,
+        pet_id: selectedPet?.id,
         email,
         donation,
       })
@@ -33,7 +33,7 @@ export function useIndex() {
           setSelectedPet(null)
           setMessage('Adoção confirmada, verifique sua caixa de email')
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<any>) => {
           setMessage(error.response?.data.message)
         })
     } else {
@@ -42,7 +42,7 @@ export function useIndex() {
   }
 
   function adoptValidate() {
-    return email.length > 0 && donation.length > 0
+    return email.length > 0 && donation.length > 0 && selectedPet !== null
   }
 
   function clearFormFields() {
