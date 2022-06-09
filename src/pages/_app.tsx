@@ -4,12 +4,14 @@ import { ThemeProvider } from '@mui/material'
 import { theme } from '../ui/themes'
 import { Header } from '../ui/components/header'
 import { HeaderAdmin } from '../ui/components/headerAdmin/HeaderAdmin'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
   return (
     <ThemeProvider theme={theme}>
-      {/* <Header /> */}
-      <HeaderAdmin />
+      {router.pathname === '/' ? <Header /> : <HeaderAdmin />}
       <Component {...pageProps} />
     </ThemeProvider>
   )
