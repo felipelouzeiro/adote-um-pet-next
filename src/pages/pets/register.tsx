@@ -13,9 +13,7 @@ const Register: NextPage = () => {
     setDescription,
     message,
     setMessage,
-    clear,
     register,
-    formValidate,
   } = useRegister()
 
   return (

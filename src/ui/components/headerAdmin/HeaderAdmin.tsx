@@ -6,12 +6,16 @@ export const HeaderAdmin = () => {
   return (
     <HeaderContainer>
       <div>
-        <Logo src="/images/logo.svg" alt="Adote um Pet" />
+        <Link component={NextLink} href={'/'}>
+          <Logo src="/images/logo.svg" alt="Adote um Pet" />
+        </Link>
+
         <LinksContainer>
-          <Link component={NextLink} href={'/pets/cadastro'}>
+          <Link component={NextLink} href={'/pets/register'}>
             <a>Cadastrar Pet</a>
           </Link>
-          <Link component={NextLink} href={'/pets/relatorio'}>
+
+          <Link component={NextLink} href={'/pets/report'}>
             <a>
               Relatório
               <Box
