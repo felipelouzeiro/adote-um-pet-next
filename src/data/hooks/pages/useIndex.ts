@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
-import { Pet } from '../../@types/patch'
+import { Pet } from '../../@types/Pet'
 import { ApiService } from '../../services/ApiServices'
 
 export function useIndex() {
