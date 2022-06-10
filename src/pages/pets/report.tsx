@@ -33,7 +33,7 @@ const Report: NextPage = () => {
               <TableRow key={id}>
                 <TableCell>{pet.name}</TableCell>
                 <TableCell>{email}</TableCell>
-                <TableCell align={'right'}>{donation}</TableCell>
+                <TableCell align={'right'}>{`R$ ${donation}`}</TableCell>
               </TableRow>
             ))}
           </TableBody>
