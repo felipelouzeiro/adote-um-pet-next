@@ -2,6 +2,8 @@
   "name": "pets",
   "version": "0.1.0",
   "private": true,
+  "author": "Felipe Alves Louzeiro",
+  "description": "Aplicação cliente desenvolvida com React e Next",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
