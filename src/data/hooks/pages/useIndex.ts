@@ -25,7 +25,7 @@ export function useIndex() {
   function toAdopt() {
     if (adoptValidate() && selectedPet !== null) {
       ApiService.post('/adocoes', {
-        pet_id: selectedPet.id,
+        pet_id: selectedPet?.id,
         email,
         donation,
       })
@@ -42,7 +42,7 @@ export function useIndex() {
   }
 
   function adoptValidate() {
-    return email.length > 0 && donation.length > 0
+    return email.length > 0 && donation.length > 0 && selectedPet !== null
   }
 
   function clearFormFields() {
