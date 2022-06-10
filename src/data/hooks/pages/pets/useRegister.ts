@@ -19,7 +19,7 @@ export function useRegister() {
           clear()
           setMessage('Pet cadastrado com sucesso!')
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<any>) => {
           setMessage(error.response?.data.message)
         })
     } else {
