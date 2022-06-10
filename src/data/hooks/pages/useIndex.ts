@@ -17,13 +17,13 @@ export function useIndex() {
   }, [])
 
   useEffect(() => {
-    if (selectedPet === null) {
+    if (selectedPet !== null) {
       clearFormFields()
     }
   }, [selectedPet])
 
   function toAdopt() {
-    if (adoptValidate()) {
+    if (adoptValidate() && selectedPet !== null) {
       ApiService.post('/adocoes', {
         pet_id: selectedPet.id,
         email,
@@ -33,7 +33,7 @@ export function useIndex() {
           setSelectedPet(null)
           setMessage('Adoção confirmada, verifique sua caixa de email')
         })
-        .catch((error: AxiosError) => {
+        .catch((error: AxiosError<any>) => {
           setMessage(error.response?.data.message)
         })
     } else {
